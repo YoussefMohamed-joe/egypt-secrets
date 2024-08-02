@@ -17,3 +17,4 @@ navigateAndRemoveUntil(context, newView) {
   Navigator.pushAndRemoveUntil(context,
       MaterialPageRoute(builder: (context) => newView), (route) => false);
 }
+

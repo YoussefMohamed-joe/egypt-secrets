@@ -1,10 +1,11 @@
 import 'package:egypt_secrets/core/utils/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 TextStyle getTitleStyle(
     {Color? color, double? fontSize, FontWeight? fontWeight}) {
   return TextStyle(
-    fontFamily: 'Roboto',
+    fontFamily: GoogleFonts.roboto().fontFamily,
     color: color ?? AppColors.dark,
     fontSize: fontSize ?? 20,
     fontWeight: fontWeight ?? FontWeight.bold,
@@ -14,7 +15,7 @@ TextStyle getTitleStyle(
 TextStyle getBodyStyle(
     {Color? color, double? fontSize, FontWeight? fontWeight}) {
   return TextStyle(
-    fontFamily: 'Roboto',
+    fontFamily: GoogleFonts.roboto().fontFamily,
     color: color ?? AppColors.dark,
     fontSize: fontSize ?? 16,
     fontWeight: fontWeight ?? FontWeight.normal,
@@ -24,9 +25,9 @@ TextStyle getBodyStyle(
 TextStyle getHeaderStyle(
     {Color? color, double? fontSize, FontWeight? fontWeight}) {
   return TextStyle(
-    fontFamily: 'Poppins',
+    fontFamily: GoogleFonts.encodeSans().fontFamily,
     color: color ?? AppColors.white,
-    fontSize: fontSize ?? 60,
-    fontWeight: fontWeight ?? FontWeight.normal,
+    fontSize: fontSize ?? 62,
+    fontWeight: fontWeight ?? FontWeight.bold,
   );
 }
