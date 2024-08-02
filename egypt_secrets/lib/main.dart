@@ -1,7 +1,10 @@
+import 'package:egypt_secrets/core/services/local_storage.dart';
 import 'package:egypt_secrets/features/onboarding/splash.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await AppLocalStorage().init();
   runApp(const MyApp());
 }
 

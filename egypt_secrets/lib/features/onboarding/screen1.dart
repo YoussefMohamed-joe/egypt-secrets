@@ -1,4 +1,3 @@
-import 'package:egypt_secrets/core/functions/routing.dart';
 import 'package:egypt_secrets/core/utils/colors.dart';
 import 'package:egypt_secrets/core/utils/text_styles.dart';
 import 'package:egypt_secrets/features/onboarding/screen2.dart';

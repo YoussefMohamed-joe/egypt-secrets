@@ -1,5 +1,6 @@
 import 'package:egypt_secrets/core/utils/colors.dart';
 import 'package:egypt_secrets/core/utils/text_styles.dart';
+import 'package:egypt_secrets/features/auth/presentation/views/welcome_view.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:page_transition/page_transition.dart';
@@ -86,7 +87,7 @@ class ScreenView3 extends StatelessWidget {
                                 reverseDuration:
                                     const Duration(milliseconds: 600),
                                 type: PageTransitionType.rightToLeftJoined,
-                                child: const ScreenView3(),
+                                child: const WelcomeView(),
                                 childCurrent: const ScreenView3()),
                           );
                         },
