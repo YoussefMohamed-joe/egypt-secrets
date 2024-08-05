@@ -1,6 +1,7 @@
 import 'package:egypt_secrets/core/utils/colors.dart';
 import 'package:egypt_secrets/core/utils/text_styles.dart';
 import 'package:egypt_secrets/features/auth/presentation/views/login_view.dart';
+import 'package:egypt_secrets/features/auth/presentation/views/register_view.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:page_transition/page_transition.dart';
@@ -79,7 +80,20 @@ class WelcomeView extends StatelessWidget {
                     height: 55,
                     width: double.infinity,
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          PageTransition(
+                              alignment: Alignment.bottomCenter,
+                              curve: Curves.easeInOut,
+                              duration: const Duration(milliseconds: 500),
+                              reverseDuration:
+                                  const Duration(milliseconds: 500),
+                              type: PageTransitionType.fade,
+                              child: const RegisterView(),
+                              childCurrent: const WelcomeView()),
+                        );
+                      },
                       style: ElevatedButton.styleFrom(
                         side: BorderSide(color: AppColors.primary),
                         backgroundColor: Colors.transparent,
