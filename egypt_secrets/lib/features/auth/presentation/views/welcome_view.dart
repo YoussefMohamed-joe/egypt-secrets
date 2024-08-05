@@ -1,9 +1,9 @@
 import 'package:egypt_secrets/core/utils/colors.dart';
 import 'package:egypt_secrets/core/utils/text_styles.dart';
+import 'package:egypt_secrets/features/auth/presentation/views/login_view.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:page_transition/page_transition.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class WelcomeView extends StatelessWidget {
   const WelcomeView({super.key});
@@ -16,11 +16,14 @@ class WelcomeView extends StatelessWidget {
           Container(
             height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/images/welcome.jpg'),
-                fit: BoxFit.cover,
-              ),
+                  image: const AssetImage('assets/images/welcome.jpg'),
+                  fit: BoxFit.cover,
+                  colorFilter: ColorFilter.mode(
+                    Colors.black.withOpacity(0.5),
+                    BlendMode.darken,
+                  )),
             ),
           ),
           Positioned(
@@ -33,55 +36,65 @@ class WelcomeView extends StatelessWidget {
                 style: getHeaderStyle(),
               )),
           Positioned(
-              bottom: 110,
+              bottom: 50,
               left: 24,
               right: 24,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    'Ready to unlock Egypt\'s magic? Let\'s get started!',
-                    style: getTitleStyle(color: AppColors.white),
+                  SizedBox(
+                    height: 55,
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          PageTransition(
+                              alignment: Alignment.bottomCenter,
+                              curve: Curves.easeInOut,
+                              duration: const Duration(milliseconds: 500),
+                              reverseDuration:
+                                  const Duration(milliseconds: 500),
+                              type: PageTransitionType.fade,
+                              child: const LoginView(),
+                              childCurrent: const WelcomeView()),
+                        );
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: AppColors.primary,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15)),
+                      ),
+                      child: Text(
+                        'Log in',
+                        style: getBodyStyle(
+                            color: AppColors.black,
+                            fontSize: 20,
+                            fontWeight: FontWeight.w500),
+                      ),
+                    ),
                   ),
-                  const Gap(20),
-                  Text(
-                    'Uncover the magic of Egypt. Start exploring!',
-                    style: getBodyStyle(color: AppColors.grey, fontSize: 12),
-                  )
-                ],
-              )),
-          Positioned(
-              bottom: 30,
-              left: 24,
-              right: 24,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SmoothPageIndicator(
-                      controller: PageController(
-                        initialPage: 2,
+                  const Gap(10),
+                  SizedBox(
+                    height: 55,
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                        side: BorderSide(color: AppColors.primary),
+                        backgroundColor: Colors.transparent,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15)),
                       ),
-                      effect: ExpandingDotsEffect(
-                        activeDotColor: AppColors.white,
-                        dotColor: AppColors.secondary,
-                        dotHeight: 10,
-                        dotWidth: 12,
+                      child: Text(
+                        'Sign up',
+                        style: getBodyStyle(
+                            color: AppColors.primary,
+                            fontSize: 20,
+                            fontWeight: FontWeight.w500),
                       ),
-                      count: 3),
-                  const Spacer(),
-                  Container(
-                    height: 70,
-                    width: 70,
-                    decoration: BoxDecoration(
-                        color: AppColors.primary,
-                        borderRadius: BorderRadius.circular(60)),
-                    child: IconButton(
-                        onPressed: () {},
-                        icon: Icon(
-                          Icons.arrow_forward,
-                          color: AppColors.black,
-                        )),
-                  )
+                    ),
+                  ),
                 ],
               )),
         ],

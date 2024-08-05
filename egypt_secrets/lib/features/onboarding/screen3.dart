@@ -1,3 +1,4 @@
+import 'package:egypt_secrets/core/services/local_storage.dart';
 import 'package:egypt_secrets/core/utils/colors.dart';
 import 'package:egypt_secrets/core/utils/text_styles.dart';
 import 'package:egypt_secrets/features/auth/presentation/views/welcome_view.dart';
@@ -78,6 +79,7 @@ class ScreenView3 extends StatelessWidget {
                         borderRadius: BorderRadius.circular(60)),
                     child: IconButton(
                         onPressed: () {
+                          AppLocalStorage.cashData("onBoarding", true);
                           Navigator.pushReplacement(
                             context,
                             PageTransition(
