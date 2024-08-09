@@ -2,6 +2,7 @@ import 'package:egypt_secrets/core/functions/email_validation.dart';
 import 'package:egypt_secrets/core/functions/routing.dart';
 import 'package:egypt_secrets/core/utils/colors.dart';
 import 'package:egypt_secrets/core/utils/text_styles.dart';
+import 'package:egypt_secrets/core/widgets/nav_bar_view.dart';
 import 'package:egypt_secrets/features/home/presantaion/views/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -186,7 +187,7 @@ class _LoginViewState extends State<LoginView> {
                               onPressed: () {
                                 if (formKey.currentState!.validate()) {
                                   navigateAndRemoveUntil(
-                                      context, const HomeView());
+                                      context, const NavBar());
                                 }
                               },
                               style: ElevatedButton.styleFrom(
