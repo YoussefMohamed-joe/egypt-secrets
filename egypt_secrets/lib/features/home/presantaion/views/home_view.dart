@@ -1,5 +1,7 @@
+import 'package:egypt_secrets/core/functions/routing.dart';
 import 'package:egypt_secrets/core/utils/colors.dart';
 import 'package:egypt_secrets/core/utils/text_styles.dart';
+import 'package:egypt_secrets/features/place/presentation/views/place_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
@@ -117,78 +119,85 @@ class _HomeViewState extends State<HomeView> {
                 physics: const NeverScrollableScrollPhysics(),
                 itemCount: 4,
                 itemBuilder: (context, index) {
-                  return Container(
-                    margin: const EdgeInsets.only(bottom: 15),
-                    child: Stack(children: [
-                      Container(
-                        height: 280,
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(15),
-                            image: const DecorationImage(
-                                image: AssetImage('assets/images/demo.png'),
-                                fit: BoxFit.cover)),
-                      ),
-                      Positioned(
-                          top: 15,
-                          left: 15,
-                          right: 25,
-                          child: Row(children: [
-                            Icon(Icons.star,
-                                color: AppColors.primary, size: 20),
-                            const Gap(5),
-                            Text("4.5",
-                                style: getBodyStyle(color: AppColors.white)),
-                            const Spacer(),
-                            Icon(
-                              Icons.bookmark,
-                              color: AppColors.primary,
-                              size: 27,
-                            )
-                          ])),
-                      Positioned(
-                          bottom: 13,
-                          left: 15,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text("Temple of Kom Ombo ",
-                                  style: getTitleStyle(
-                                      color: AppColors.white,
-                                      fontWeight: FontWeight.normal,
-                                      fontSize: 22)),
-                              const Gap(3),
-                              Row(
-                                children: [
-                                  Icon(
-                                    Icons.location_on,
-                                    color: AppColors.grey,
-                                    size: 15,
-                                  ),
-                                  const Gap(3),
-                                  Text(
-                                      "Nagoa Ash Shatb, Markaz Kom Ombo, Aswan",
-                                      style: getBodyStyle(
-                                          color: AppColors.grey, fontSize: 12)),
-                                ],
-                              ),
-                              const Gap(8),
-                              Row(
-                                children: [
-                                  Text("\$60",
-                                      style: getBodyStyle(
-                                          color: AppColors.primary,
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.bold)),
-                                  const Gap(3),
-                                  Text("/Day",
-                                      style: getBodyStyle(
-                                          color: AppColors.grey, fontSize: 10)),
-                                ],
+                  return GestureDetector(
+                    onTap: () {
+                      navigateTo(context, const PlaceView());
+                    },
+                    child: Container(
+                      margin: const EdgeInsets.only(bottom: 15),
+                      child: Stack(children: [
+                        Container(
+                          height: 280,
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(15),
+                              image: const DecorationImage(
+                                  image: AssetImage('assets/images/demo.png'),
+                                  fit: BoxFit.cover)),
+                        ),
+                        Positioned(
+                            top: 15,
+                            left: 15,
+                            right: 25,
+                            child: Row(children: [
+                              Icon(Icons.star,
+                                  color: AppColors.primary, size: 20),
+                              const Gap(5),
+                              Text("4.5",
+                                  style: getBodyStyle(color: AppColors.white)),
+                              const Spacer(),
+                              Icon(
+                                Icons.bookmark,
+                                color: AppColors.primary,
+                                size: 27,
                               )
-                            ],
-                          ))
-                    ]),
+                            ])),
+                        Positioned(
+                            bottom: 13,
+                            left: 15,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text("Temple of Kom Ombo ",
+                                    style: getTitleStyle(
+                                        color: AppColors.white,
+                                        fontWeight: FontWeight.normal,
+                                        fontSize: 22)),
+                                const Gap(3),
+                                Row(
+                                  children: [
+                                    Icon(
+                                      Icons.location_on,
+                                      color: AppColors.grey,
+                                      size: 15,
+                                    ),
+                                    const Gap(3),
+                                    Text(
+                                        "Nagoa Ash Shatb, Markaz Kom Ombo, Aswan",
+                                        style: getBodyStyle(
+                                            color: AppColors.grey,
+                                            fontSize: 12)),
+                                  ],
+                                ),
+                                const Gap(8),
+                                Row(
+                                  children: [
+                                    Text("\$60",
+                                        style: getBodyStyle(
+                                            color: AppColors.primary,
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.bold)),
+                                    const Gap(3),
+                                    Text("/Day",
+                                        style: getBodyStyle(
+                                            color: AppColors.grey,
+                                            fontSize: 10)),
+                                  ],
+                                )
+                              ],
+                            ))
+                      ]),
+                    ),
                   );
                 },
               )

@@ -3,7 +3,6 @@ import 'package:egypt_secrets/core/functions/routing.dart';
 import 'package:egypt_secrets/core/utils/colors.dart';
 import 'package:egypt_secrets/core/utils/text_styles.dart';
 import 'package:egypt_secrets/core/widgets/nav_bar_view.dart';
-import 'package:egypt_secrets/features/home/presantaion/views/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:gap/gap.dart';

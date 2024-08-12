@@ -4,9 +4,7 @@ import 'package:egypt_secrets/features/compass/presentation/views/compass_view.d
 import 'package:egypt_secrets/features/fav/presentation/views/fav_view.dart';
 import 'package:egypt_secrets/features/home/presantaion/views/home_view.dart';
 import 'package:floating_bottom_navigation_bar/floating_bottom_navigation_bar.dart';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class NavBar extends StatefulWidget {
   const NavBar({super.key});

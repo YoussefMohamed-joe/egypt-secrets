@@ -11,4 +11,5 @@ class AppColors {
   static Color semiwhite = const Color(0xffE8ECF4);
   static Color textformcolor = const Color(0xff505050);
   static Color semiblack = const Color(0xff1C1C1C);
+  static Color semitrans = const Color.fromARGB(99, 81, 81, 81);
 }
