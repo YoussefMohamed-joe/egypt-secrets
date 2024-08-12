@@ -3,8 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 TextStyle getTitleStyle(
-    {Color? color, double? fontSize, FontWeight? fontWeight}) {
+    {Color? color,
+    double? fontSize,
+    FontWeight? fontWeight,
+    bool? decoration}) {
   return TextStyle(
+    decoration:
+        decoration ?? false ? TextDecoration.underline : TextDecoration.none,
     fontFamily: GoogleFonts.roboto().fontFamily,
     color: color ?? AppColors.dark,
     fontSize: fontSize ?? 20,
