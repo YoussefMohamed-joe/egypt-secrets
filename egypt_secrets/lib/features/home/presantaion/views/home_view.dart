@@ -1,6 +1,7 @@
 import 'package:egypt_secrets/core/functions/routing.dart';
 import 'package:egypt_secrets/core/utils/colors.dart';
 import 'package:egypt_secrets/core/utils/text_styles.dart';
+import 'package:egypt_secrets/features/auth/presentation/manager/auth_cubit.dart';
 import 'package:egypt_secrets/features/place/presentation/views/place_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -27,6 +28,7 @@ class _HomeViewState extends State<HomeView> {
     'Camping',
     'Mount',
   ];
+  String name = AuthCubit.gName == "" ? "User" : AuthCubit.gName;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,12 +52,12 @@ class _HomeViewState extends State<HomeView> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Hello',
+                        'Hello,',
                         style: getBodyStyle(color: AppColors.grey),
                       ),
                       const Gap(3),
                       Text(
-                        'Abdulrahman',
+                        name,
                         style: getBodyStyle(
                             color: AppColors.white,
                             fontWeight: FontWeight.bold),

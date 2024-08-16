@@ -80,7 +80,7 @@ class _FavViewState extends State<FavView> {
                                       ),
                                     ],
                                   ),
-                                  const Gap(50),
+                                  const Gap(35),
                                   Row(
                                     children: [
                                       Text("\$60",
@@ -93,6 +93,14 @@ class _FavViewState extends State<FavView> {
                                           style: getBodyStyle(
                                               color: AppColors.grey,
                                               fontSize: 10)),
+                                      const Spacer(),
+                                      IconButton(
+                                        onPressed: () {},
+                                        icon: Icon(
+                                          Icons.delete_outlined,
+                                          color: AppColors.primary,
+                                        ),
+                                      )
                                     ],
                                   )
                                 ]),

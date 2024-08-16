@@ -1,10 +1,14 @@
 import 'package:egypt_secrets/core/functions/email_validation.dart';
 import 'package:egypt_secrets/core/functions/routing.dart';
+import 'package:egypt_secrets/core/services/local_storage.dart';
 import 'package:egypt_secrets/core/utils/colors.dart';
 import 'package:egypt_secrets/core/utils/text_styles.dart';
-import 'package:egypt_secrets/features/home/presantaion/views/home_view.dart';
+import 'package:egypt_secrets/core/widgets/nav_bar_view.dart';
+import 'package:egypt_secrets/features/auth/presentation/manager/auth_cubit.dart';
+import 'package:egypt_secrets/features/auth/presentation/manager/auth_states.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 
 class RegisterView extends StatefulWidget {
@@ -27,6 +31,28 @@ class _RegisterViewState extends State<RegisterView> {
     return Scaffold(
       backgroundColor: AppColors.secondary,
       body: SingleChildScrollView(
+          child: BlocListener<AuthCubit, AuthStates>(
+        listener: (context, state) {
+          if (state is RegisterErrorState) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(state.error),
+              ),
+            );
+            navigatepop(context);
+          } else if (state is RegisterSuccessState) {
+            AppLocalStorage.cashData(
+                'token', state.postAuthResponse.data!.token);
+            navigateAndRemoveUntil(context, const NavBar());
+          } else if (state is RegisterLoadingState) {
+            showDialog(
+                context: context,
+                builder: (context) => Center(
+                        child: CircularProgressIndicator(
+                      valueColor: AlwaysStoppedAnimation(AppColors.primary),
+                    )));
+          }
+        },
         child: Form(
           key: formKey,
           child: Column(children: [
@@ -333,8 +359,14 @@ class _RegisterViewState extends State<RegisterView> {
                             child: ElevatedButton(
                               onPressed: () {
                                 if (formKey.currentState!.validate()) {
-                                  navigateAndRemoveUntil(
-                                      context, const HomeView());
+                                  if (formKey.currentState!.validate()) {
+                                    context.read<AuthCubit>().register(
+                                        name: firstNameController.text,
+                                        email: emailController.text,
+                                        password: passwordController.text,
+                                        passwordConfirmation:
+                                            confirmPasswordController.text);
+                                  }
                                 }
                               },
                               style: ElevatedButton.styleFrom(
@@ -387,7 +419,7 @@ class _RegisterViewState extends State<RegisterView> {
                 ))
           ]),
         ),
-      ),
+      )),
     );
   }
 }
