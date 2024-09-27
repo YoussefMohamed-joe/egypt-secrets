@@ -38,7 +38,7 @@ class _NavBarState extends State<NavBar> {
           left: 15,
           right: 15,
           child: SizedBox(
-            height: 105,
+            height: 150,
             width: MediaQuery.of(context).size.width,
             child: FloatingNavbar(
               selectedBackgroundColor: AppColors.secondary,
